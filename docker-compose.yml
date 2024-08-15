@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  chrome-extension-builder:
+    image: node:16
+    container_name: chrome_extension_builder
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./build:/app/build
+    command: >
+      sh -c "
+        npm install &&
+        npm run build
+      "
